@@ -1,0 +1,10 @@
+{
+    "esversion": 8,
+    "node": true,
+    "globals": {
+        "$": false,
+        "request": true,
+        "body": true,
+        "response": true
+    }
+}

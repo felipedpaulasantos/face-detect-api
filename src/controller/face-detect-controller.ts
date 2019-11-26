@@ -3,7 +3,7 @@ import { Request, Response } from 'express-serve-static-core';
 import { utils, DetectedFaceDao } from '../infra';
 import { faceDetectApi } from '../api';
 import { ImageFile, DetectedFace } from '../models';
-import { ApiResponseError, FileError } from '../custom-errors';
+import { ApiResponseError, FileError, BusinessError } from '../custom-errors';
 import { DetectionAttributes } from 'models/detection-attributes';
 
 class FaceDetectController {
@@ -12,14 +12,17 @@ class FaceDetectController {
 
 	async detect(req: any, res: Response) {
 
-		const returnFaceId: boolean = req.query.retornaId ? true : false;
-		const returnFaceLandmarks: boolean = req.query.retornaPontosReferencia ? true : false;
-		const returnRecognitionModel: boolean = req.query.retornaModeloReconhecimento ? true : false;
+		const returnFaceId: boolean =
+			(req.query.retornaId && req.query.retornaId == 'true') ? true : false;
+		const returnFaceLandmarks: boolean =
+			(req.query.retornaPontosReferencia && req.query.retornaPontosReferencia == 'true') ? true : false;
+		const returnRecognitionModel: boolean = 
+			(req.query.retornaModeloReconhecimento && req.query.retornaModeloReconhecimento == 'true') ? true : false;
 
 		try {
 
 			let imageFile = await utils.extractImageFromRequest(req);
-			let apiResponse = await faceDetectApi.detect(<ImageFile>imageFile, returnFaceId, returnFaceLandmarks, returnRecognitionModel);
+			let apiResponse: DetectedFace[] | any = await faceDetectApi.detect(<ImageFile>imageFile, returnFaceId, returnFaceLandmarks, returnRecognitionModel);
 
 			if (!apiResponse) {
 				throw new ApiResponseError('Resposta inválida da API', 400);
@@ -29,9 +32,13 @@ class FaceDetectController {
 				throw new ApiResponseError(apiResponse.error.message, 400, apiResponse.error);
 			}
 
-			let detectedFaceDao = new DetectedFaceDao(req.db);
+			if (apiResponse && apiResponse.length == 0) {
+				throw new BusinessError('Nenhuma face detectada', 422);
+			}
+
+			const detectedFaceDao = new DetectedFaceDao(req.db);
+			const databaseInsertPromises: any[] = [];
 			let face: DetectedFace;
-			let databaseInsertPromises: any[] = [];
 
 			apiResponse.forEach((detectedFace: DetectionAttributes) => {
 				face = {

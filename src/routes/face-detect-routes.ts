@@ -8,7 +8,7 @@ export function faceDetectRoutes(app: any): void {
 
 	app.route(`/${appName}/${appVersion}/detectar`)
 		.post(
-			app.get('upload').single('imageFile'), 
+			app.get('upload').single('arquivoImagem'),
 			wrapAsync(faceDetectController.detect)
 		);
 

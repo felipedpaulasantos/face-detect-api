@@ -1,0 +1,1285 @@
+{
+	"info": {
+		"_postman_id": "09b48f57-1ded-4048-8f6a-22c9a703b437",
+		"name": "Azure Face API v1.0",
+		"description": "<h6>Face API da Microsoft Azure</h6>\n\n- <b>Documentação da API</b>: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236\n- <b>Descrição dos serviços</b>: https://azure.microsoft.com/pt-br/services/cognitive-services/face/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Serviços de Detecção",
+			"item": [
+				{
+					"name": "Detecção",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "arquivoImagem",
+									"type": "file",
+									"src": "/C:/Users/c135289/Pictures/faceDetect/imagemDeTeste.jpg"
+								},
+								{
+									"key": "url",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}/detectar?retornaId=true&retornaPontosReferencia=false&retornaModeloReconhecimento=false",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"detectar"
+							],
+							"query": [
+								{
+									"key": "retornaId",
+									"value": "true"
+								},
+								{
+									"key": "retornaPontosReferencia",
+									"value": "false"
+								},
+								{
+									"key": "retornaModeloReconhecimento",
+									"value": "false"
+								}
+							]
+						},
+						"description": "<h6>Detecte um ou mais rostos em uma imagem e receba características dos atributos faciais disponíveis como: Idade, Emoções, Gênero, Pose, Sorriso e Pelos Faciais, juntamente com 27 pontos de referência para cada rosto na imagem.</h6>\n\n<hr>\n\nA imagem pode ser enviada como:\n- Atributo <b>arquivoImagem</b>, do tipo file;\n\n\tou\n\n- Atributo <b>url</b>, com o endereço da imagem na internet."
+					},
+					"response": [
+						{
+							"name": "Detecção de face - Usando um arquivo local",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageFile",
+											"type": "file",
+											"src": "/C:/Users/c135289/Pictures/faceDetect/imagemDeTeste.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/v1/detect",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"detect"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "937"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a9-yNzZgRxGHvWfJDDAHLAvMP0/sOk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jul 2019 18:19:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"faceId\": \"4c2d7c75-656f-4c36-bb37-2670c22760f4\",\n        \"faceRectangle\": {\n            \"top\": 85,\n            \"left\": 30,\n            \"width\": 97,\n            \"height\": 97\n        },\n        \"faceAttributes\": {\n            \"smile\": 1,\n            \"headPose\": {\n                \"pitch\": 1.3,\n                \"roll\": 0.4,\n                \"yaw\": -7.6\n            },\n            \"gender\": \"female\",\n            \"age\": 50,\n            \"facialHair\": {\n                \"moustache\": 0,\n                \"beard\": 0,\n                \"sideburns\": 0\n            },\n            \"glasses\": \"NoGlasses\",\n            \"emotion\": {\n                \"anger\": 0,\n                \"contempt\": 0,\n                \"disgust\": 0,\n                \"fear\": 0,\n                \"happiness\": 1,\n                \"neutral\": 0,\n                \"sadness\": 0,\n                \"surprise\": 0\n            },\n            \"blur\": {\n                \"blurLevel\": \"low\",\n                \"value\": 0\n            },\n            \"exposure\": {\n                \"exposureLevel\": \"goodExposure\",\n                \"value\": 0.72\n            },\n            \"noise\": {\n                \"noiseLevel\": \"low\",\n                \"value\": 0.22\n            },\n            \"makeup\": {\n                \"eyeMakeup\": true,\n                \"lipMakeup\": true\n            },\n            \"accessories\": [],\n            \"occlusion\": {\n                \"foreheadOccluded\": false,\n                \"eyeOccluded\": false,\n                \"mouthOccluded\": false\n            },\n            \"hair\": {\n                \"bald\": 0.7,\n                \"invisible\": false,\n                \"hairColor\": [\n                    {\n                        \"color\": \"blond\",\n                        \"confidence\": 1\n                    },\n                    {\n                        \"color\": \"gray\",\n                        \"confidence\": 0.95\n                    },\n                    {\n                        \"color\": \"other\",\n                        \"confidence\": 0.56\n                    },\n                    {\n                        \"color\": \"red\",\n                        \"confidence\": 0.05\n                    },\n                    {\n                        \"color\": \"black\",\n                        \"confidence\": 0.04\n                    },\n                    {\n                        \"color\": \"brown\",\n                        \"confidence\": 0.02\n                    }\n                ]\n            }\n        }\n    }\n]"
+						},
+						{
+							"name": "Detecção de face - Usando uma URL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "url",
+											"value": "http://midias.gazetaonline.com.br/_midias/jpg/2018/06/13/32703323_241643243091103_7264540910321401856_n-5653514.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/v1/detect",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"detect"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "968"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c8-OJizalrXzvulY7pMN1J/Hh1cOGY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jul 2019 18:09:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"faceId\": \"da7a9f01-d323-4f1b-8c8a-e6a789ecbfe5\",\n        \"faceRectangle\": {\n            \"top\": 219,\n            \"left\": 207,\n            \"width\": 394,\n            \"height\": 394\n        },\n        \"faceAttributes\": {\n            \"smile\": 0.755,\n            \"headPose\": {\n                \"pitch\": -6.8,\n                \"roll\": -3.4,\n                \"yaw\": -7.9\n            },\n            \"gender\": \"female\",\n            \"age\": 34,\n            \"facialHair\": {\n                \"moustache\": 0,\n                \"beard\": 0,\n                \"sideburns\": 0\n            },\n            \"glasses\": \"NoGlasses\",\n            \"emotion\": {\n                \"anger\": 0,\n                \"contempt\": 0.001,\n                \"disgust\": 0,\n                \"fear\": 0,\n                \"happiness\": 0.755,\n                \"neutral\": 0.244,\n                \"sadness\": 0,\n                \"surprise\": 0\n            },\n            \"blur\": {\n                \"blurLevel\": \"medium\",\n                \"value\": 0.3\n            },\n            \"exposure\": {\n                \"exposureLevel\": \"overExposure\",\n                \"value\": 0.76\n            },\n            \"noise\": {\n                \"noiseLevel\": \"medium\",\n                \"value\": 0.34\n            },\n            \"makeup\": {\n                \"eyeMakeup\": true,\n                \"lipMakeup\": true\n            },\n            \"accessories\": [],\n            \"occlusion\": {\n                \"foreheadOccluded\": false,\n                \"eyeOccluded\": false,\n                \"mouthOccluded\": false\n            },\n            \"hair\": {\n                \"bald\": 0.09,\n                \"invisible\": false,\n                \"hairColor\": [\n                    {\n                        \"color\": \"brown\",\n                        \"confidence\": 1\n                    },\n                    {\n                        \"color\": \"black\",\n                        \"confidence\": 0.76\n                    },\n                    {\n                        \"color\": \"red\",\n                        \"confidence\": 0.34\n                    },\n                    {\n                        \"color\": \"blond\",\n                        \"confidence\": 0.16\n                    },\n                    {\n                        \"color\": \"gray\",\n                        \"confidence\": 0.12\n                    },\n                    {\n                        \"color\": \"other\",\n                        \"confidence\": 0.08\n                    }\n                ]\n            }\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Identificação",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"personGroupId\": \"sample_group\",\n    \"faceIds\": [\n        \"f122fd0f-9d36-4690-b4fb-27cde9556927\",\n        \"e400fd72-3ba5-4def-8fd2-3c81b8d71b64\",\n        \"eaeb6e2b-8965-4c9d-880a-88d293c149a6\",\n        \"fdea0e71-4144-454a-87b7-7b4e80f55f2b\"\n    ]\n}\n"
+						},
+						"url": {
+							"raw": "{{URL}}/identificar",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"identificar"
+							]
+						},
+						"description": "<h6>A partir de um grupo de faces aleatórias, identifica se, em um <i>PersonGroup</i>, há alguma <i>Person</i> que se identifica com cada rosto.</h6>\n\n- Recebe um array de <b>faceIds</b>, retornados pela chamada <i>Detecção</i>;\n- Compara estes <b>faceIds</b> com os integrantes de um <b>PersonGroup</b> já treinado pela chamada <i>Treinamento de PersonGroup</i>;\n- Retorna uma relação em que: para cada faceId recebido, é identificada uma \"Person\" do \"PersonGroup\" informado que mais se aproxima desta face, e a chance de acerto, de 0 a 1.\n\n<hr>\n\n<b>Request body</b>\n<pre>\n{\n    \"personGroupId\": \"sample_group\",\n    \"faceIds\": [\n        \"f122fd0f-9d36-4690-b4fb-27cde9556927\",\n        \"e400fd72-3ba5-4def-8fd2-3c81b8d71b64\",\n        \"eaeb6e2b-8965-4c9d-880a-88d293c149a6\",\n        \"fdea0e71-4144-454a-87b7-7b4e80f55f2b\"\n    ]\n}\n</pre>\n\n<b>Request Response</b>\n<pre>\n[\n    {\n        \"faceId\": \"f122fd0f-9d36-4690-b4fb-27cde9556927\",\n        \"candidates\": [\n            {\n                \"personId\": \"c0b27584-9cd5-4405-b684-2b1fb2916b19\",\n                \"confidence\": 0.99488\n            }\n        ]\n    },\n    {\n        \"faceId\": \"e400fd72-3ba5-4def-8fd2-3c81b8d71b64\",\n        \"candidates\": []\n    },\n    {\n        \"faceId\": \"eaeb6e2b-8965-4c9d-880a-88d293c149a6\",\n        \"candidates\": []\n    },\n    {\n        \"faceId\": \"fdea0e71-4144-454a-87b7-7b4e80f55f2b\",\n        \"candidates\": [\n            {\n                \"personId\": \"abaccec5-760a-43b8-8403-382e6c587e65\",\n                \"confidence\": 0.94498\n            }\n        ]\n    }\n]\n</pre>"
+					},
+					"response": [
+						{
+							"name": "Identificação de face",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"personGroupId\": \"sample_group\",\n    \"faceIds\": [\n        \"f122fd0f-9d36-4690-b4fb-27cde9556927\",\n        \"e400fd72-3ba5-4def-8fd2-3c81b8d71b64\",\n        \"eaeb6e2b-8965-4c9d-880a-88d293c149a6\",\n        \"fdea0e71-4144-454a-87b7-7b4e80f55f2b\"\n    ]\n}\n"
+								},
+								"url": {
+									"raw": "{{URL}}/v1/identify",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"identify"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "409"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"199-v21wP95vNZQUHEM/W0CrlFWDeCQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2019 17:51:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"faceId\": \"f122fd0f-9d36-4690-b4fb-27cde9556927\",\n        \"candidates\": [\n            {\n                \"personId\": \"c0b27584-9cd5-4405-b684-2b1fb2916b19\",\n                \"confidence\": 0.99488\n            }\n        ]\n    },\n    {\n        \"faceId\": \"e400fd72-3ba5-4def-8fd2-3c81b8d71b64\",\n        \"candidates\": []\n    },\n    {\n        \"faceId\": \"eaeb6e2b-8965-4c9d-880a-88d293c149a6\",\n        \"candidates\": []\n    },\n    {\n        \"faceId\": \"fdea0e71-4144-454a-87b7-7b4e80f55f2b\",\n        \"candidates\": [\n            {\n                \"personId\": \"abaccec5-760a-43b8-8403-382e6c587e65\",\n                \"confidence\": 0.94498\n            }\n        ]\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Listar faces detectadas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/faces-detectadas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"faces-detectadas"
+							]
+						},
+						"description": "- Lista as informações das faces detectadas em consultas anteriores utilizando a chamada <i>Detecção de face</i>.\n- Estas informações não ficam armazenadas na API da Azure, e sim no banco de dados da própria aplicação."
+					},
+					"response": [
+						{
+							"name": "Detecção de face - Usando um arquivo local",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "imageFile",
+											"type": "file",
+											"src": "/C:/Users/c135289/Pictures/faceDetect/imagemDeTeste.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/v1/detect",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"detect"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "937"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3a9-yNzZgRxGHvWfJDDAHLAvMP0/sOk\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jul 2019 18:19:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"faceId\": \"4c2d7c75-656f-4c36-bb37-2670c22760f4\",\n        \"faceRectangle\": {\n            \"top\": 85,\n            \"left\": 30,\n            \"width\": 97,\n            \"height\": 97\n        },\n        \"faceAttributes\": {\n            \"smile\": 1,\n            \"headPose\": {\n                \"pitch\": 1.3,\n                \"roll\": 0.4,\n                \"yaw\": -7.6\n            },\n            \"gender\": \"female\",\n            \"age\": 50,\n            \"facialHair\": {\n                \"moustache\": 0,\n                \"beard\": 0,\n                \"sideburns\": 0\n            },\n            \"glasses\": \"NoGlasses\",\n            \"emotion\": {\n                \"anger\": 0,\n                \"contempt\": 0,\n                \"disgust\": 0,\n                \"fear\": 0,\n                \"happiness\": 1,\n                \"neutral\": 0,\n                \"sadness\": 0,\n                \"surprise\": 0\n            },\n            \"blur\": {\n                \"blurLevel\": \"low\",\n                \"value\": 0\n            },\n            \"exposure\": {\n                \"exposureLevel\": \"goodExposure\",\n                \"value\": 0.72\n            },\n            \"noise\": {\n                \"noiseLevel\": \"low\",\n                \"value\": 0.22\n            },\n            \"makeup\": {\n                \"eyeMakeup\": true,\n                \"lipMakeup\": true\n            },\n            \"accessories\": [],\n            \"occlusion\": {\n                \"foreheadOccluded\": false,\n                \"eyeOccluded\": false,\n                \"mouthOccluded\": false\n            },\n            \"hair\": {\n                \"bald\": 0.7,\n                \"invisible\": false,\n                \"hairColor\": [\n                    {\n                        \"color\": \"blond\",\n                        \"confidence\": 1\n                    },\n                    {\n                        \"color\": \"gray\",\n                        \"confidence\": 0.95\n                    },\n                    {\n                        \"color\": \"other\",\n                        \"confidence\": 0.56\n                    },\n                    {\n                        \"color\": \"red\",\n                        \"confidence\": 0.05\n                    },\n                    {\n                        \"color\": \"black\",\n                        \"confidence\": 0.04\n                    },\n                    {\n                        \"color\": \"brown\",\n                        \"confidence\": 0.02\n                    }\n                ]\n            }\n        }\n    }\n]"
+						},
+						{
+							"name": "Detecção de face - Usando uma URL",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "url",
+											"value": "http://midias.gazetaonline.com.br/_midias/jpg/2018/06/13/32703323_241643243091103_7264540910321401856_n-5653514.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{URL}}/v1/detect",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"detect"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "968"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3c8-OJizalrXzvulY7pMN1J/Hh1cOGY\""
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 16 Jul 2019 18:09:26 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"faceId\": \"da7a9f01-d323-4f1b-8c8a-e6a789ecbfe5\",\n        \"faceRectangle\": {\n            \"top\": 219,\n            \"left\": 207,\n            \"width\": 394,\n            \"height\": 394\n        },\n        \"faceAttributes\": {\n            \"smile\": 0.755,\n            \"headPose\": {\n                \"pitch\": -6.8,\n                \"roll\": -3.4,\n                \"yaw\": -7.9\n            },\n            \"gender\": \"female\",\n            \"age\": 34,\n            \"facialHair\": {\n                \"moustache\": 0,\n                \"beard\": 0,\n                \"sideburns\": 0\n            },\n            \"glasses\": \"NoGlasses\",\n            \"emotion\": {\n                \"anger\": 0,\n                \"contempt\": 0.001,\n                \"disgust\": 0,\n                \"fear\": 0,\n                \"happiness\": 0.755,\n                \"neutral\": 0.244,\n                \"sadness\": 0,\n                \"surprise\": 0\n            },\n            \"blur\": {\n                \"blurLevel\": \"medium\",\n                \"value\": 0.3\n            },\n            \"exposure\": {\n                \"exposureLevel\": \"overExposure\",\n                \"value\": 0.76\n            },\n            \"noise\": {\n                \"noiseLevel\": \"medium\",\n                \"value\": 0.34\n            },\n            \"makeup\": {\n                \"eyeMakeup\": true,\n                \"lipMakeup\": true\n            },\n            \"accessories\": [],\n            \"occlusion\": {\n                \"foreheadOccluded\": false,\n                \"eyeOccluded\": false,\n                \"mouthOccluded\": false\n            },\n            \"hair\": {\n                \"bald\": 0.09,\n                \"invisible\": false,\n                \"hairColor\": [\n                    {\n                        \"color\": \"brown\",\n                        \"confidence\": 1\n                    },\n                    {\n                        \"color\": \"black\",\n                        \"confidence\": 0.76\n                    },\n                    {\n                        \"color\": \"red\",\n                        \"confidence\": 0.34\n                    },\n                    {\n                        \"color\": \"blond\",\n                        \"confidence\": 0.16\n                    },\n                    {\n                        \"color\": \"gray\",\n                        \"confidence\": 0.12\n                    },\n                    {\n                        \"color\": \"other\",\n                        \"confidence\": 0.08\n                    }\n                ]\n            }\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Verificação - Pessoa a Face",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"faceId\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"personId\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\",\n    \"personGroupId\": \"sample_group\"\n}\n"
+						},
+						"url": {
+							"raw": "{{URL}}/verificar-pessoa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"verificar-pessoa"
+							]
+						},
+						"description": "<h6>Verifique a possibilidade de dois rostos serem da mesma pessoa. A API retornará uma pontuação de confiança sobre a probabilidade de que as duas faces pertençam à mesma pessoa.</h6>\n\n- Recebe um <b>FaceId</b>, retornado pela chamada <i>Detecção de face</i>, um <b>GroupId</b> e um <b>PersonId</b>;\n- Compara esta face do <b>FaceId</b> com as faces cadastradas para esta <b>PersonId</b>;\n- Retorna o atributo boleano <b>isIdentical</b>, e a taxa de acerto <b>confidence</b>, informando a chance desta foto pertencer a pessoa informada.\n\n<hr>\n\n<b>Request Body:</b> \n<pre>\n{\n    \"faceId\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"personId\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\",\n    \"personGroupId\": \"sample_group\"\n}\n\n</pre>\n\n<b>Response:</b>\n<pre>\n{\n    \"isIdentical\": true,\n    \"confidence\": 0.94498\n}\n</pre>"
+					},
+					"response": [
+						{
+							"name": "Verificação de face",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"faceId\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"personId\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\",\n    \"personGroupId\": \"sample_group\"\n}\n"
+								},
+								"url": {
+									"raw": "{{URL}}/v1/verify",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"verify"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-giNUXrvp9wkcNAdghfXJBqavqHw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Jul 2019 13:17:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isIdentical\": true,\n    \"confidence\": 0.94498\n}"
+						}
+					]
+				},
+				{
+					"name": "Verificação - Face a Face",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"faceId1\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"faceId2\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\"\n}\n"
+						},
+						"url": {
+							"raw": "{{URL}}/verificar-faces",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"verificar-faces"
+							]
+						},
+						"description": "<h6>Verifique a possibilidade de dois rostos serem da mesma pessoa. A API retornará uma pontuação de confiança sobre a probabilidade de que as duas faces pertençam à mesma pessoa.</h6>\n\n- Recebe dois <b>FaceId</b> e os compara;\n- Retorna o atributo boleano <b>isIdentical</b>, e a taxa de acerto <b>confidence</b>, informando a chance desta foto pertencer a pessoa informada.\n\n<hr>\n\n<b>Request Body:</b> \n<pre>\n{\n    \"faceId\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"personId\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\",\n    \"personGroupId\": \"sample_group\"\n}\n\n</pre>\n\n<b>Response:</b>\n<pre>\n{\n    \"isIdentical\": true,\n    \"confidence\": 0.94498\n}\n</pre>"
+					},
+					"response": [
+						{
+							"name": "Verificação de face",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"faceId\": \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n    \"personId\": \"6bc9f7ae-dff7-48ce-aea0-c2e5183fff32\",\n    \"personGroupId\": \"sample_group\"\n}\n"
+								},
+								"url": {
+									"raw": "{{URL}}/v1/verify",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"verify"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-giNUXrvp9wkcNAdghfXJBqavqHw\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Jul 2019 13:17:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isIdentical\": true,\n    \"confidence\": 0.94498\n}"
+						}
+					]
+				},
+				{
+					"name": "Agrupamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"faceIds\": [\r\n        \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\r\n        \"c049bef9-ad2b-4124-95c6-dfc2bb292670\",\r\n        \"fc364684-3fd1-4718-8123-aede2fcfa2a7\",\r\n        \"e4edb5ff-bf53-403e-8140-ffb16d403875\"\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/agrupar",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"agrupar"
+							]
+						},
+						"description": "<h6>Organize vários rostos não identificados em grupos, com base em sua semelhança visual</h6>\n\n- Recebe uma lista de <b>faceIds</b>, retornados pela chamada <i>Detecção de face</i>;\n- Agrupa as imagens/faceIds pela sua similaridade; ou seja, faces que provavelmente são da mesma pessoa serão agrupadas em um mesmo grupo;\n- Retorna os grupos criados com faces similares, e, se for o caso, o grupo <b>messyGroup</b>, contendo as faces não identificadas com qualquer outra.\n\n<hr>\n\n<b>Request body</b>\n<pre>\n{\n    \"faceIds\": [\n        \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n        \"c049bef9-ad2b-4124-95c6-dfc2bb292670\",\n        \"fc364684-3fd1-4718-8123-aede2fcfa2a7\",\n        \"e4edb5ff-bf53-403e-8140-ffb16d403875\"\n    ]\n}\n</pre>\n\n<b>Request Response</b>\n<pre>\n{\n    \"groups\": [\n        [\n            \"c049bef9-ad2b-4124-95c6-dfc2bb292670\",\n            \"e4edb5ff-bf53-403e-8140-ffb16d403875\"\n        ]\n    ],\n    \"messyGroup\": [\n        \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n        \"fc364684-3fd1-4718-8123-aede2fcfa2a7\"\n    ]\n}\n</pre>"
+					},
+					"response": [
+						{
+							"name": "Agrupamento de faces",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"faceIds\": [\r\n        \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\r\n        \"c049bef9-ad2b-4124-95c6-dfc2bb292670\",\r\n        \"fc364684-3fd1-4718-8123-aede2fcfa2a7\",\r\n        \"e4edb5ff-bf53-403e-8140-ffb16d403875\"\r\n    ]\r\n}"
+								},
+								"url": {
+									"raw": "{{URL}}/v1/group",
+									"host": [
+										"{{URL}}"
+									],
+									"path": [
+										"v1",
+										"group"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Expose-Headers",
+									"value": "x-access-token"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "185"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b9-TqF9I7e7H39nXFwIhsOjpRvqNEY\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 18 Jul 2019 13:28:34 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"groups\": [\n        [\n            \"c049bef9-ad2b-4124-95c6-dfc2bb292670\",\n            \"e4edb5ff-bf53-403e-8140-ffb16d403875\"\n        ]\n    ],\n    \"messyGroup\": [\n        \"f52ebcb7-87af-41d9-b693-4747a8b5c567\",\n        \"fc364684-3fd1-4718-8123-aede2fcfa2a7\"\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Comparar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": "/C:/Users/c135289/Pictures/faceDetect/MVIMG_20190207_184427238.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/comparar",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"comparar"
+							]
+						},
+						"description": "Compara duas faces identificadas em uma mesma imagem, e verifica se pertencem a mesma pessoa.<br>\nA imagem <b>deve</b> possuir exatamente duas faces."
+					},
+					"response": []
+				}
+			],
+			"description": "<h6>Serviços de detecção e identificação de pessoas por reconhecimento facial pela <b>Vision API</b> da Microsoft Azure</h6>\n\n<b>Serviços disponíveis:</b>\n- Detecção: a partir de uma imagem, traz informações dos rostos detectados, como emoções, idade, e gênero;\n- Identificação: compara o rosto de uma imagem avulsa com os rostos de pessoas cadastradas em um grupo, e verifica se o rosto informado pertence a alguém do grupo;\n- Verificação: analisa a chance de um rosto avulso ser de uma determinada pessoa já cadastrada;\n- Agrupamento: recebe uma lista de rostos analisados e agrupa os que forem similares, ou seja, os que possivelmente sejam de uma mesma pessoa.",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bd134ad8-b7f9-441b-adf7-5d9d52f2df9d",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "57ef08b8-2648-4e16-85ec-fd60183f796b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Grupos de Pessoas",
+			"item": [
+				{
+					"name": "Criação de Grupos de Pessoas",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sample_group\",\r\n    \"userData\": \"Grupo de testes.\",\r\n    \"recognitionModel\": \"recognition_02\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem de Grupos de Pessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Grupo de Pessoas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualização de Grupo de Pessoas",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"sample_group\",\r\n    \"userData\": \"Grupo de testes.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remoção de Grupo de Pessoas",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Treinamento de Grupo de Pessoas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}/train",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"train"
+							]
+						},
+						"description": "- Treina o PersonGroup para torná-lo apto a utilizar o serviço \"Identify\".\n- Esta tarefa é assíncrona. Para consultar seu status, utilize a chamada \"Consulta status de Treinamento\"."
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta status de Treinamento",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/grupo-pessoas/{{personGroupId}}/train",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"train"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pessoas",
+			"item": [
+				{
+					"name": "Criação de Pessoa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Felipe\",\r\n    \"userData\": \"Pessoa 1.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listagem de Pessoas",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta de Pessoa",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas/{{personId}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualização de Pessoa",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fulano\",\r\n    \"userData\": \"Pessoa 2.\"\r\n}"
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas/{{personId}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remoção de Pessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas/{{personId}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criação de face",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "imageFile",
+									"type": "file",
+									"src": []
+								},
+								{
+									"key": "url",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas/{{personId}}/faces-persistidas",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas",
+								"{{personId}}",
+								"faces-persistidas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remoção de Face",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{scheme}}://{{host}}:{{port}}/{{appName}}/{{version}}/grupo-pessoas/{{personGroupId}}/pessoas/{{personId}}/faces-persistidas/{{persistedFaceId}}",
+							"protocol": "{{scheme}}",
+							"host": [
+								"{{host}}"
+							],
+							"port": "{{port}}",
+							"path": [
+								"{{appName}}",
+								"{{version}}",
+								"grupo-pessoas",
+								"{{personGroupId}}",
+								"pessoas",
+								"{{personId}}",
+								"faces-persistidas",
+								"{{persistedFaceId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "69a8a3ed-f1a8-4876-8e84-4503892942ff",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4770c7df-abea-4f0b-8e61-7371751d74b9",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

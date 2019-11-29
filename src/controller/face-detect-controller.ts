@@ -79,7 +79,7 @@ class FaceDetectController {
 			);
 
 			if (apiResponse.error) {
-				throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
+				throw new ApiResponseError(apiResponse.error.message);
 			}
 
 			console.log(`Faces enviadas para identificação no grupo ${personGroupId}`);
@@ -99,7 +99,7 @@ class FaceDetectController {
 			let apiResponse = await faceDetectApi.verifyFaceToPerson(personGroupId, personId, faceId);
 
 			if (apiResponse.error) {
-				throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
+				throw new ApiResponseError(apiResponse.error.message);
 			}
 
 			console.log(`Face ${faceId} enviada para comparação com a Pessoa ${personId}`);
@@ -118,7 +118,7 @@ class FaceDetectController {
 			let apiResponse = await faceDetectApi.verifyFaceToFace(faceId1, faceId2);
 
 			if (apiResponse.error) {
-				throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
+				throw new ApiResponseError(apiResponse.error.message);
 			}
 
 			console.log(`Faces enviadas para comparação`);
@@ -135,7 +135,7 @@ class FaceDetectController {
 			let apiResponse = await faceDetectApi.group(faceIds);
 
 			if (apiResponse.error) {
-				throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
+				throw new ApiResponseError(apiResponse.error.message);
 			}
 
 			console.log(`Faces encaminhadas para agrupamento.`);
@@ -152,7 +152,7 @@ class FaceDetectController {
 			let apiResponse = await faceDetectApi.detect(<ImageFile>imageFile);
 
 			if (apiResponse && apiResponse.error) {
-				throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
+				throw new ApiResponseError(apiResponse.error.message);
 			}
 
 			if (!apiResponse) {

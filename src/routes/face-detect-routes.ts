@@ -29,7 +29,7 @@ export function faceDetectRoutes(app: any): void {
 
 	app.route(`/${appName}/${appVersion}/comparar`)
 		.post(
-			app.get('upload').single('imageFile'),
+			app.get('upload').single('arquivoImagem'),
 			wrapAsync(faceDetectController.compare)
 		);
 }

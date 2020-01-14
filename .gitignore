@@ -68,3 +68,4 @@ uploads/
 *.jpeg
 *.png
 *.gif
+data.db

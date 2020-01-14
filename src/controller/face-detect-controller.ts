@@ -82,7 +82,7 @@ class FaceDetectController {
 				throw new ApiResponseError(apiResponse.error.message);
 			}
 
-			console.log(`Faces enviadas para identificação no grupo ${personGroupId}`);
+			console.info(`Faces enviadas para identificação no grupo ${personGroupId}`);
 			res.status(200).json(apiResponse);
 
 		} catch (err) { res.status(err.status).json( err.toJson() ); }
@@ -102,7 +102,7 @@ class FaceDetectController {
 				throw new ApiResponseError(apiResponse.error.message);
 			}
 
-			console.log(`Face ${faceId} enviada para comparação com a Pessoa ${personId}`);
+			console.info(`Face ${faceId} enviada para comparação com a Pessoa ${personId}`);
 			res.status(200).json(apiResponse);
 
 		} catch (err) { res.status(err.status).json( err.toJson() ); }
@@ -121,7 +121,7 @@ class FaceDetectController {
 				throw new ApiResponseError(apiResponse.error.message);
 			}
 
-			console.log(`Faces enviadas para comparação`);
+			console.info(`Faces enviadas para comparação`);
 			res.status(200).json(apiResponse);
 
 		} catch (err) { res.status(err.status).json( err.toJson() ); }
@@ -138,7 +138,7 @@ class FaceDetectController {
 				throw new ApiResponseError(apiResponse.error.message);
 			}
 
-			console.log(`Faces encaminhadas para agrupamento.`);
+			console.info(`Faces encaminhadas para agrupamento.`);
 			res.status(200).json(apiResponse);
 
 		} catch (err) { res.status(err.status).json( err.toJson() ); }

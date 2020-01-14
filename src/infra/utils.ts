@@ -2,8 +2,6 @@ import jimp from 'jimp';
 import { FileError } from '../custom-errors';
 import { ImageFile } from 'models/image-file';
 
-const path = require('path');
-
 class Utils {
 
 	constructor() {}

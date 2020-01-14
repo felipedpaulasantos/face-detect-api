@@ -22,7 +22,7 @@ class PersonGroupController {
                 }
 
                 await new PersonGroupDao(req.db).addPersonGroup(group);
-                console.log(`Grupo "${group.id}" adicionado com sucesso.`);
+                console.info(`Grupo "${group.id}" adicionado com sucesso.`);
                 res.status(200).json(apiResponse);
             })
             .catch((err: any) => res.status(err.status).json({erro: err.message}));
@@ -39,7 +39,7 @@ class PersonGroupController {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
                 }
 
-                console.log(`Grupo "${personGroupId}" consultado com sucesso.`);
+                console.info(`Grupo "${personGroupId}" consultado com sucesso.`);
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json({erro: err.message}));
@@ -58,7 +58,7 @@ class PersonGroupController {
                 }
 
                 await new PersonGroupDao(req.db).updatePersonGroup(personGroupId, personGroup);
-                console.log(`Grupo "${personGroupId}" atualizado com sucesso.`);
+                console.info(`Grupo "${personGroupId}" atualizado com sucesso.`);
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json({erro: err.message}));
@@ -76,7 +76,7 @@ class PersonGroupController {
                 }
 
                 await new PersonGroupDao(req.db).removePersonGroup(personGroupId);
-                console.log(`Grupo "${personGroupId}" removido com sucesso.`);
+                console.info(`Grupo "${personGroupId}" removido com sucesso.`);
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json({erro: err.message}));
@@ -93,7 +93,7 @@ class PersonGroupController {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
                 }
 
-                console.log(`Grupo "${personGroupId}" enviado para treinamento. Aguardar finalização.`);
+                console.info(`Grupo "${personGroupId}" enviado para treinamento. Aguardar finalização.`);
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json({erro: err.message}));
@@ -110,7 +110,7 @@ class PersonGroupController {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
                 }
 
-                console.log(`Status de treinamento do grupo "${personGroupId}" consultado com sucesso.`);
+                console.info(`Status de treinamento do grupo "${personGroupId}" consultado com sucesso.`);
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json({erro: err.message}));

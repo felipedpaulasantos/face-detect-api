@@ -22,7 +22,7 @@ export class Server {
         this.setRoutes();
 
         this.app.listen(process.env['PORT'] || this.port); 
-        console.log(`Servidor escutando na porta ${this.port}`);
+        console.info(`Servidor escutando na porta ${this.port}`);
     }
 
     private configureMiddlewares(): void {

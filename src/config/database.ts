@@ -66,7 +66,7 @@ export class DatabaseConfig {
     
         process.on('SIGINT', () =>
             this.db.close(() => {
-                console.log('Database closed');
+                console.info('Database closed');
                 process.exit(0);
             })
         );

@@ -18,7 +18,7 @@ class PersonController {
                 if (!apiResponse.error) { 
                     person.id = apiResponse.personId;
                     await new PersonDao(req.db).addPerson(person, personGroupId);                    
-                    console.log(`Pessoa "${person.name}" adicionada ao Grupo '${personGroupId}' com sucesso.`);                                            
+                    console.info(`Pessoa "${person.name}" adicionada ao Grupo '${personGroupId}' com sucesso.`);                                            
                     res.status(200).json(apiResponse);      
                 } else {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
@@ -39,7 +39,7 @@ class PersonController {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
                 }
                  
-                console.log(`Pessoa ${personId} do grupo '${personGroupId}' consultada com sucesso.`);                                            
+                console.info(`Pessoa ${personId} do grupo '${personGroupId}' consultada com sucesso.`);                                            
                 res.status(200).json(apiResponse);      
             })
             .catch(err => res.status(err.status).json(err.toJson()));          
@@ -59,7 +59,7 @@ class PersonController {
                 }
 
                 await new PersonDao(req.db).updatePerson(personId, person);                    
-                console.log(`Pessoa "${person.name}" atualizada com sucesso.`);                                            
+                console.info(`Pessoa "${person.name}" atualizada com sucesso.`);                                            
                 res.status(200).json(apiResponse);      
                 
             })
@@ -79,7 +79,7 @@ class PersonController {
                 }
 
                 await new PersonDao(req.db).removePerson(personId);                  
-                console.log(`Pessoa ${personId} removida do Grupo '${personGroupId}' com sucesso.`);                 
+                console.info(`Pessoa ${personId} removida do Grupo '${personGroupId}' com sucesso.`);                 
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json(err.toJson()));       
@@ -113,7 +113,7 @@ class PersonController {
                     target: faceTarget
                 };
                 await new PersonDao(req.db).addFace(face, personId);                  
-                console.log(`Face ${face.id} adicionada à pessoa ${personId}, no Grupo '${personGroupId}' com sucesso.`);  
+                console.info(`Face ${face.id} adicionada à pessoa ${personId}, no Grupo '${personGroupId}' com sucesso.`);  
                 res.status(200).json(apiResponse);                    
             })
             .catch(err => res.status(err.status).json(err.toJson())); 
@@ -132,7 +132,7 @@ class PersonController {
                     throw new ApiResponseError(apiResponse.error.message, apiResponse.error);
                 }
           
-                console.log(`Face ${faceId} da pessoa ${personId}, no Grupo '${personGroupId}' consultada com sucesso.`);                                                  
+                console.info(`Face ${faceId} da pessoa ${personId}, no Grupo '${personGroupId}' consultada com sucesso.`);                                                  
                 res.status(200).json(apiResponse);      
             })
             .catch(err => res.status(err.status).json(err.toJson()));             
@@ -152,7 +152,7 @@ class PersonController {
                 }
 
                 await new PersonDao(req.db).removePersonFace(personId);                  
-                console.log(`Face da pessoa ${personId} removida com sucesso.`);  
+                console.info(`Face da pessoa ${personId} removida com sucesso.`);  
                 res.status(200).json(apiResponse);
             })
             .catch(err => res.status(err.status).json(err.toJson()));         

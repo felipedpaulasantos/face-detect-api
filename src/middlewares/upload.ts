@@ -29,7 +29,7 @@ function configureUpload() {
     const upload = multer({
         storage,
         fileFilter(req, file, cb) {
-            console.log("Recebendo o arquivo de imagem...");
+            console.info("Recebendo o arquivo de imagem...");
             cb(null, true);
         }
     });
